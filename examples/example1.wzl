@@ -1,5 +1,7 @@
+# Variable initialization
 i = 0;
 acc = 0;
+max_val = 10;
 
 # Simple while loop
 while (i < 5) {
@@ -7,8 +9,39 @@ while (i < 5) {
     i = i + 1;
 }
 
-# Print the result
+# Print the accumulated result
 print(acc);  # Should print 10
 
-# Plot as a vector
-# plot([acc]);  # Should show a single point
+# If statement example
+if (acc > 5) {
+    message = 100;
+    print(message);  # Should print 100
+} else {
+    message = 0;
+    print(message);  # Won't execute since acc > 5
+}
+
+# If-else with multiple conditions
+val = 7;
+a = 50;
+b = 30;
+if (val > 10) {
+    print(a);  # Won't execute
+} else {
+    print(b);  # Should print 30
+}
+
+# Nested while loop with if condition
+x = 0;
+y = 0;
+while (x < 3) {
+    print(x); // prints 0 1 2
+    x = x + 1;
+}
+
+# Vector creation 
+result = [1, 2, 3, 4, 5];
+
+# Print the final vector
+print(result);  # Should print [1, 2, 3, 4, 5]
+

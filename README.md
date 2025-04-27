@@ -68,7 +68,8 @@ WizuAll includes a convenient installation script to make it accessible from any
 
 ```bash
 # Run the installation script (requires sudo)
-./scripts/install.sh
+sudo ./scripts/install.sh
+sudo wizz --help # Works globally
 ```
 
 This script will:
@@ -103,6 +104,34 @@ wizz myfile.wzl
 # Save the generated WizuAll code when processing data files
 ./wizz.sh -p data.pdf -o myoutput.wzl
 ```
+
+## Examples
+
+Several example WizuAll scripts are provided in the `examples/` directory:
+
+```bash
+# Basic examples
+./wizz.sh examples/example1.wzl
+./wizz.sh examples/example2.wzl
+
+# Plot examples
+./wizz.sh examples/line_plots/testlineplot.wzl
+./wizz.sh examples/histograms/testhisto.wzl
+./wizz.sh examples/scatter_plots/testplot.wzl
+
+# Generate plots from data
+./wizz.sh -l tests/input/testlineplot.txt --type line
+./wizz.sh -l tests/input/testhisto.txt --type histogram
+./wizz.sh -l tests/input/testplot.txt --type scatter
+```
+
+### Core Examples
+
+- **example1.wzl**: Demonstrates WizuAll's control flow features including if-else statements, nested conditionals, and while loops. Shows how to use variables, conditions, loops, and print statements to control program execution and output.
+
+- **example2.wzl**: Focuses on vector operations, showing both vector-scalar operations (multiplication, addition) and element-wise vector operations (addition, subtraction, multiplication, division). Demonstrates how vectors can be manipulated, combined, and visualized through various operations.
+
+Other examples focus on specific visualization types such as line plots, scatter plots, and histograms.
 
 ## Technical Capabilities
 
@@ -247,25 +276,6 @@ scatter(x, y);
 // This is a single-line comment
 
 # This is also a single-line comment
-```
-
-## Examples
-
-Several example WizuAll scripts are provided in the `examples/` directory:
-
-```bash
-# Basic examples
-./wizz.sh examples/example1.wzl
-
-# Plot examples
-./wizz.sh examples/line_plots/testlineplot.wzl
-./wizz.sh examples/histograms/testhisto.wzl
-./wizz.sh examples/scatter_plots/testplot.wzl
-
-# Generate plots from data
-./wizz.sh -l tests/input/testlineplot.txt --type line
-./wizz.sh -l tests/input/testhisto.txt --type histogram
-./wizz.sh -l tests/input/testplot.txt --type scatter
 ```
 
 ## Limitations and Future Work

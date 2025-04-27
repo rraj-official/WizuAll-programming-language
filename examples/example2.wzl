@@ -1,35 +1,66 @@
-a = 10;
-b = 20;
-c = a + b;          # 30
+# Example 2: Vector-Scalar Operations and Element-wise Vector Operations
+# This example demonstrates various vector operations in WizuAll
 
-print(c);           # prints 30
+# Create vectors
+vec1 = [10, 20, 30, 40, 50];
+vec2 = [5, 10, 15, 20, 25];
 
-if (c > 25) {
-    message = 25;   # Using a number - we don't have string literals
-    print(message); # prints 25 
-    print(c - 25);  # prints 5
-} else {
-    message = 0;    
-    print(message); # Would print 0 if the condition was false
-}
+# Print the original vectors
+print(vec1);  # Should print [10, 20, 30, 40, 50]
+print(vec2);  # Should print [5, 10, 15, 20, 25]
 
-# Another if statement
-if (a > b) {
-    print(a);       # This won't execute since a is not > b
-} else {
-    print(b+2);       # prints 20
-}
+# Vector-Scalar Operations
+# -----------------------
 
-# Using vectors
-vec = [1, 2, 3, 4, 5];
-print(vec);         # prints the vector [1, 2, 3, 4, 5]
+# Multiply vector by scalar
+scalar = 2;
+result1 = [0, 0, 0, 0, 0];
+result1 = scalar * vec1;
+print(result1);  # Should print [20, 40, 60, 80, 100]
 
-# Let's try scalar multiplication
-# Note: Direct scalar-vector multiplication is not supported in Wizuall,
-# but we've demonstrated how vectors and scalars work
-# If implementing, support would need to be added to codegen.c to 
-# properly handle vector operations
+# Scalar multiplication with literal
+scalar1 = 3;
+result2 = [0, 0, 0, 0, 0];
+result2 = vec2 * scalar1;
+print(result2);  # Should print [15, 30, 45, 60, 75]
 
-# Vector in a plot statement
-# plot([c, c-5, c-10]); # plots 30, 25, 20
+# Vector * scalar (order doesn't matter)
+scalar3 = 0.5;
+result3 = [0, 0, 0, 0, 0];
+result3 = vec1 * scalar3;
+print(result3);  # Should print [5, 10, 15, 20, 25]
+
+# Element-wise Vector Operations
+# ----------------------------
+
+# Vector addition (element-wise)
+sum_vec = [0, 0, 0, 0, 0];
+sum_vec = vec1 + vec2;
+print(sum_vec);  # Should print [15, 30, 45, 60, 75]
+
+# Vector subtraction (element-wise)
+diff_vec = [0, 0, 0, 0, 0];
+diff_vec = vec1 - vec2;
+print(diff_vec);  # Should print [5, 10, 15, 20, 25]
+
+# Vector multiplication (element-wise)
+prod_vec = [0, 0, 0, 0, 0];
+prod_vec = vec1 * vec2;
+print(prod_vec);  # Should print [50, 200, 450, 800, 1250]
+
+# Vector division (element-wise)
+div_vec = [0, 0, 0, 0, 0];
+div_vec = vec1 / vec2;
+print(div_vec);  # Should print [2, 2, 2, 2, 2]
+
+# Visualizing the vectors
+# ---------------------
+# Uncomment any of these to see the plots
+
+# Plot a single vector
+# plot(vec1);  # Simple line plot
+
+# Plot a scatter plot using two vectors
+# scatter(vec1, vec2);
+
 
