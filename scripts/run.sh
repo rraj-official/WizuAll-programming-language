@@ -148,9 +148,10 @@ if [ "$UPDATE_MODE" = true ]; then
         exit 1
     fi
     
-    echo "Updating system-wide installation..."
-    if ! sudo "$TEMP_DIR/scripts/install.sh"; then
-        echo "Error: Installation failed. Do you have sudo privileges?"
+    echo "Installing updated version..."
+    # Use the install.sh from the current script directory
+    if ! cd "$TEMP_DIR" && bash "$TEMP_DIR/scripts/install.sh"; then
+        echo "Error: Installation failed. Check if the install script exists and you have proper permissions."
         rm -rf "$TEMP_DIR"
         exit 1
     fi

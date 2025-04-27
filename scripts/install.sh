@@ -1,46 +1,38 @@
 #!/bin/bash
 
-# Installation script for WizuAll
+# WizuAll Installer Script
+# This script installs WizuAll system-wide
 
-# Create installation directories
-echo "Creating installation directories..."
-sudo mkdir -p /usr/local/bin
-sudo mkdir -p /usr/local/lib/wizuall/bin
-sudo mkdir -p /usr/local/lib/wizuall/scripts
-sudo mkdir -p /usr/local/lib/wizuall/examples
-sudo mkdir -p /usr/local/lib/wizuall/wizz_build
+echo "Installing WizuAll system-wide..."
 
-# Copy files to appropriate locations
-echo "Copying WizuAll files..."
-sudo cp bin/wizuallc /usr/local/lib/wizuall/bin/
-sudo cp scripts/preprocess.rb /usr/local/lib/wizuall/scripts/
-sudo cp scripts/run.sh /usr/local/lib/wizuall/scripts/
+# Set base paths
+BASE_DIR="$(dirname "$(dirname "$(readlink -f "$0")")")"
+BIN_DIR="$BASE_DIR/bin"
+SCRIPTS_DIR="$BASE_DIR/scripts"
 
-# Create global script in PATH
-cat << 'EOF' | sudo tee /usr/local/bin/wizz > /dev/null
-#!/bin/bash
+# Ensure the binary exists
+if [ ! -f "$BIN_DIR/wizuallc" ]; then
+    echo "Error: Compiler binary not found. Please build the project first."
+    exit 1
+fi
 
-# Global script for WizuAll
-SCRIPT_DIR="/usr/local/lib/wizuall/scripts"
+# Install binary to /usr/local/bin
+echo "Installing WizuAll compiler to /usr/local/bin..."
+cp "$BIN_DIR/wizuallc" /usr/local/bin/
+chmod +x /usr/local/bin/wizuallc
 
-# Run the actual script
-"$SCRIPT_DIR/run.sh" "$@"
-EOF
+# Install the main script (wizz command)
+echo "Installing wizz command to /usr/local/bin..."
+cp "$SCRIPTS_DIR/run.sh" /usr/local/bin/wizz
+chmod +x /usr/local/bin/wizz
 
-# Make scripts executable
-sudo chmod +x /usr/local/bin/wizz
-sudo chmod +x /usr/local/lib/wizuall/scripts/run.sh
-sudo chmod +x /usr/local/lib/wizuall/scripts/preprocess.rb
-sudo chmod +x /usr/local/lib/wizuall/bin/wizuallc
+# Install preprocessor script
+if [ -f "$SCRIPTS_DIR/preprocess.rb" ]; then
+    echo "Installing preprocessor script..."
+    cp "$SCRIPTS_DIR/preprocess.rb" /usr/local/bin/
+    chmod +x /usr/local/bin/preprocess.rb
+fi
 
-# Copy examples
-echo "Installing examples..."
-for dir in examples/*; do
-  if [ -d "$dir" ]; then
-    sudo mkdir -p "/usr/local/lib/wizuall/$dir"
-    sudo cp "$dir"/* "/usr/local/lib/wizuall/$dir/" 2>/dev/null || true
-  fi
-done
-
-echo "Installation complete!"
-echo "Use the 'wizz' command to run WizuAll from anywhere." 
+echo "Installation completed! WizuAll is now available system-wide."
+echo "You can use the 'wizz' command from anywhere to run WizuAll programs."
+exit 0 
