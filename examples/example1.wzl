@@ -1,0 +1,14 @@
+i = 0;
+acc = 0;
+
+# Simple while loop
+while (i < 5) {
+    acc = acc + 2;
+    i = i + 1;
+}
+
+# Print the result
+print(acc);  # Should print 10
+
+# Plot as a vector
+# plot([acc]);  # Should show a single point

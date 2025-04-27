@@ -1,0 +1,7 @@
+// Auto-generated line plot code from testlineplot.txt
+// Title: Data Visualization
+// Data points: 10
+
+// Generate line plot with Y values
+// Using direct vector literal with plot()
+plot([5, 7, 9, 11, 13, 15, 14, 18, 20, 22]);

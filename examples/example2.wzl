@@ -1,0 +1,35 @@
+a = 10;
+b = 20;
+c = a + b;          # 30
+
+print(c);           # prints 30
+
+if (c > 25) {
+    message = 25;   # Using a number - we don't have string literals
+    print(message); # prints 25 
+    print(c - 25);  # prints 5
+} else {
+    message = 0;    
+    print(message); # Would print 0 if the condition was false
+}
+
+# Another if statement
+if (a > b) {
+    print(a);       # This won't execute since a is not > b
+} else {
+    print(b+2);       # prints 20
+}
+
+# Using vectors
+vec = [1, 2, 3, 4, 5];
+print(vec);         # prints the vector [1, 2, 3, 4, 5]
+
+# Let's try scalar multiplication
+# Note: Direct scalar-vector multiplication is not supported in Wizuall,
+# but we've demonstrated how vectors and scalars work
+# If implementing, support would need to be added to codegen.c to 
+# properly handle vector operations
+
+# Vector in a plot statement
+# plot([c, c-5, c-10]); # plots 30, 25, 20
+

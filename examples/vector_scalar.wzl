@@ -1,0 +1,13 @@
+# Simple vector-scalar multiplication test
+
+# Create a vector
+vec = [1, 2, 3, 4, 5];
+print(vec);
+
+# Create a result variable - manually setting it as a vector
+result = vec;
+print(result);
+
+# Now perform scalar multiplication
+result = vec * 2;
+print(result); 

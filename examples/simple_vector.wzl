@@ -1,0 +1,3 @@
+# Create and print a vector
+my_vec = [1, 2, 3];
+print(my_vec); 

@@ -1,0 +1,13 @@
+// Auto-generated scatter plot code from test-scatter.pdf
+// Title: Data Visualization
+// Data points: 10
+
+// X values
+x = [15, 3.5, 4, 5.1, 6, 7, 8.8, 9, 10, 1];
+
+// Y values
+y = [28, 12, 10, 15, 18, 14, 22, 20, 25, 1];
+
+// Generate scatter plot
+// title("Data Visualization"); // Optional: Uncomment and use if title function exists in WizuAll
+scatter(x, y);
